@@ -1,0 +1,9 @@
+{% load i18n bootstrap %}
+
+{% if user.is_authenticated %}
+	<form class="login" method="POST" action="">
+		{% csrf_token %}
+		{{ form|bootstrap }}
+		<button class="btn btn-success" type="submit">{% trans "Save" %}</button>
+	</form>
+{% endif %}

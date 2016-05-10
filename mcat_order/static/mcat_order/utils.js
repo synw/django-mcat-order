@@ -43,3 +43,7 @@ function clear_cart(url) {
 	$('#cart_icon').hide();
 	$('#cart').delay(1000).slideToggle();
 }
+
+function order(url) {
+	$('#cart').load(url);
+}

@@ -37,7 +37,7 @@
 				<div class="text-right"><strong>{% trans 'Total' %}</strong>: {{ cart.total|format_price|safe }} </div>
 				<p class="text-right gus">
 					<a class="btn btn-default pull-left" href="javascript:clear_cart('{% url 'clear-cart' %}')">{% trans 'Clear cart' %}</a>
-					<a class="btn btn-blue" href="">{% trans 'Order now' %}</a>
+					<a class="btn btn-blue" href="javascript:order('{% url 'mcat-order' %}')">{% trans 'Order now' %}</a>
 				</p>
 			{% else %}
 				<p>{% trans 'No items in cart' %}</p>
