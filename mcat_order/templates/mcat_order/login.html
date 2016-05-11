@@ -1,0 +1,25 @@
+{% load i18n %}
+{% load bootstrap %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+
+{% block content %}
+
+<h1>{% trans "Sign In" %}</h1>
+<div class="gf gc">
+	<div class="gtv btn btn-default gus gds">
+		<i class="fa fa-check-square-o fa-lg"></i>&nbsp;<a href="{{ signup_url }}">{% trans "Signup" %}</a>
+	</div>
+</div>
+
+<form class="login" method="POST" action="{% url 'account_login' %}">
+  {% csrf_token %}
+  {{ form|bootstrap }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+</form>
+
+{% endblock %}

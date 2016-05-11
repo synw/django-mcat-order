@@ -10,34 +10,23 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12" id="cart_content">
-			<div style="padding-top:0.5em">
+			<div style="padding-top:0.5em;">
 				<a href="javascript:toggle_cart()">
-					<i class="fa fa-close fa-2x pull-right"></i>
+					<i class="fa fa-close fa-2x pull-right grs"></i>
 				</a>
 			</div>
 			<h3><i class="fa fa-shopping-cart"></i>&nbsp;{% trans 'Cart' %}</h3>
 			{% if cart.items %}
 				<p>
-				{% for item in cart.items %}
-					<div class="gds" style="border-bottom:1px solid #CCCCCC;padding-bottom:0.5em">
-				    	<div class="pull-right">{{ item.subtotal|format_price|safe }}</div>
-				    	<div>
-				    		<strong>
-				    			<a href="javascript:add_more_to_cart('{% url 'add-to-cart' item.product.slug %}')">
-				    				<i class="fa fa-plus"></i>
-				    			</a> {{ item.quantity }} 
-				    			<a href="javascript:remove_from_cart('{% url 'remove-from-cart' item.product.slug %}')">
-				    				<i class="fa fa-minus"></i>
-				    			</a>
-				    		</strong> {{ item.product.name }}
-				    	</div>
-				    </div>
-				{% endfor %}
+					{% include "mcat_order/cart_content.html" %}
 				</p>
-				<div class="text-right"><strong>{% trans 'Total' %}</strong>: {{ cart.total|format_price|safe }} </div>
-				<p class="text-right gus">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+				<p class="text-right gds">
 					<a class="btn btn-default pull-left" href="javascript:clear_cart('{% url 'clear-cart' %}')">{% trans 'Clear cart' %}</a>
-					<a class="btn btn-blue" href="javascript:order('{% url 'mcat-order' %}')">{% trans 'Order now' %}</a>
+					<a class="btn btn-blue grs" href="{% url 'mcat-order' %}">{% trans 'Order now' %}</a>
 				</p>
 			{% else %}
 				<p>{% trans 'No items in cart' %}</p>

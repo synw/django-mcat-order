@@ -1,0 +1,19 @@
+{% load i18n mcat_tags carton_tags %}
+{% get_cart as cart %}
+
+{% for item in cart.items %}
+	<div class="gds" style="border-bottom:1px solid #CCCCCC;padding-bottom:0.5em">
+    	<div class="pull-right grs">{{ item.subtotal|format_price|safe }}</div>
+    	<div>
+    		<strong>
+    			<a href="javascript:add_more_to_cart('{% url 'add-to-cart' item.product.slug %}')">
+    				<i class="fa fa-plus"></i>
+    			</a> {{ item.quantity }} 
+    			<a href="javascript:remove_from_cart('{% url 'remove-from-cart' item.product.slug %}')">
+    				<i class="fa fa-minus"></i>
+    			</a>
+    		</strong> {{ item.product.name }}
+    	</div>
+    </div>
+{% endfor %}
+<div class="pull-right grs"><strong>{% trans 'Total' %}</strong>: {{ cart.total|format_price|safe }} </div>

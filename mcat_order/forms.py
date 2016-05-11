@@ -6,13 +6,13 @@ from django.contrib.auth.models import User
 
      
 class CustomerForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(CustomerForm, self).__init__(*args, **kwargs)
+        self.fields['civility'].label = ''
+        return
+    
     class Meta:
         model = Customer
-        fields = ['first_name', 'last_name', 'civility', 'telephone', 'email', 'address']
-        widgets = {'civility': forms.RadioSelect}
-        
-
-class LoginForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ['username', 'password', 'email']
+        fields = ['civility', 'first_name', 'last_name', 'telephone', 'email', 'address']
+        widgets = {'civility': forms.RadioSelect()}

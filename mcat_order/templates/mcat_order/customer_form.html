@@ -1,9 +1,19 @@
+{% extends 'base.html' %}
 {% load i18n bootstrap %}
 
-{% if user.is_authenticated %}
-	<form class="login" method="POST" action="">
-		{% csrf_token %}
-		{{ form|bootstrap }}
-		<button class="btn btn-success" type="submit">{% trans "Save" %}</button>
-	</form>
-{% endif %}
+{% block content %}
+<div class="row col-title-bg">
+	<div class="col-xs-12 col-sm-4 col-sm-push-8">
+		<h3>{% trans "Order summary" %}</h3>
+		{% include "mcat_order/cart_content.html" %}
+	</div>
+	<div class="col-xs-12 col-sm-8 col-sm-pull-4" style="background-color:white">
+		<h3>{% trans "Please fill the informations below" %}</h3>
+		<form class="login" method="POST" action="">
+			{% csrf_token %}
+			{{ form|bootstrap }}
+			<button class="btn btn-success" type="submit">{% trans "Save" %}</button>
+		</form>
+	</div>
+</div>
+{% endblock content %}
