@@ -1,0 +1,12 @@
+{% load i18n mcat_tags carton_tags %}
+{% get_cart as cart %}
+
+{% for item in cart.items %}
+	<div class="gds" style="border-bottom:1px solid #CCCCCC;padding-bottom:0.5em">
+    	<div class="pull-right grs">{{ item.subtotal|format_price|safe }}</div>
+		<strong>
+			</a> {{ item.quantity }} 
+		</strong> {{ item.product.name }}
+    </div>
+{% endfor %}
+<div class="pull-right grs gds-md"><i class="fa fa-calculator"></i>&nbsp;<strong>{% trans 'Total' %}</strong>: {{ cart.total|format_price|safe }} </div>

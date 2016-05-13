@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load i18n bootstrap %}
+
+{% block content %}
+<div class="row col-title-bg">
+	<div class="col-xs-12 col-sm-4 col-sm-push-8">
+		<h3 class="gds">{% trans "Order summary" %}</h3>
+		{% include "mcat_order/cart_summary.html" %}
+	</div>
+	<div class="col-xs-12 col-sm-8 col-sm-pull-4" style="background-color:white;padding-bottom:4em">
+		<h3 class="text-center">{% trans "Please confirm the order" %}</h3>
+		<div class="row">
+			<div class="col-xs-12 col-md-offset-2 col-md-8 col-md-offset-2">
+				<div style="font-size:120%">
+					<p>{{ customer.get_civility }} {{ customer.first_name }} {{ customer.last_name }}</p>
+					<p>{{ customer.telephone }} - {{ customer.email }}</p>
+				</div>
+				<p>{{ customer.address|linebreaksbr }}</p>
+				<p class="text-center gus-md gds" style="font-size:120%;">{% trans 'Are these informations correct?' %}</p>
+					<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-sm-offset-2"> 
+						<a class="btn btn-block btn-primary gds" href="#delivery">{% trans "Yes, continue" %}</a>
+						<a class="btn btn-block btn-default" href="{% url 'mcat-update-customer-form' customer.pk %}">{% trans "No, update the infos" %}</a>&nbsp;&nbsp;&nbsp;
+					</div>
+				</p>
+			</div>
+		</div>
+		<hr />
+		<a name="delivery"></a><h3 class="text-center">{% trans "Delivery conditions" %}</h3>
+		{% include "mcat_order/content/delivery_conditions.html" %}
+		<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-sm-offset-2 gus"> 
+			<a class="btn btn-block btn-primary gds" href="javascript:process_order()">{% trans "I agree the delivery conditions" %}</a>
+		</div>
+	</div>
+</div>
+{% endblock content %}

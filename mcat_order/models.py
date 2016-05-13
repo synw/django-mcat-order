@@ -8,7 +8,7 @@ from mbase.models import MetaBaseModel, MetaBaseStatusModel, MetaBaseUniqueSlugM
 from mcat_order.conf import ORDER_STATUSES, CIVILITIES
 
 
-class Customer(MetaBaseModel, MetaBaseStatusModel, MetaBaseUniqueSlugModel):
+class Customer(MetaBaseModel, MetaBaseStatusModel):
     first_name = models.CharField(max_length=120, verbose_name=_(u'First name'))
     last_name = models.CharField(max_length=120, verbose_name=_(u'Last name'))
     civility = models.CharField(max_length=60, verbose_name=_(u'Title'), choices=CIVILITIES, default=CIVILITIES[0][0])
@@ -16,7 +16,7 @@ class Customer(MetaBaseModel, MetaBaseStatusModel, MetaBaseUniqueSlugModel):
     company_name = models.CharField(max_length=120, blank=True, verbose_name=_(u'Company name'))
     email = models.EmailField(verbose_name=_(u'Email'))
     address = models.TextField(verbose_name=_(u'Address'))
-    user = models.ForeignKey(User, verbose_name=_(u'User') )
+    user = models.OneToOneField(User, verbose_name=_(u'User') )
     extra = JSONField(blank=True, verbose_name=_(u'Extra infos'))
     
     class Meta:
@@ -31,9 +31,15 @@ class Customer(MetaBaseModel, MetaBaseStatusModel, MetaBaseUniqueSlugModel):
     @property
     def telephone_formated(self):
         return '%s %s %s %s' %(self.telephone[0:2],self.telephone[2:4],self.telephone[4:6],self.telephone[6:8])
-
+    
+    def get_civility(self):
+        for civ in CIVILITIES:
+            if civ[0] == self.civility:
+                return civ[1]
+        return self.civility
+ 
    
-class Order(MetaBaseModel, MetaBaseUniqueSlugModel):
+class Order(MetaBaseModel):
     customer = models.ForeignKey(Customer, related_name='orders', verbose_name=_(u'Customer'))
     status = models.CharField(max_length=120, verbose_name=_(u'Status'), choices=ORDER_STATUSES, default=ORDER_STATUSES[0][0])
     items = JSONField(blank=True, verbose_name=_(u'Ordered items'))

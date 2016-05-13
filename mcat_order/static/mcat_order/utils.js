@@ -25,6 +25,9 @@ function add_to_cart(url) {
 		window.location.hash = '#cart';
 	}
 }
+function load_cart_actions(url) {
+	fire_request('cart_actions',url);
+}
 
 function add_more_to_cart(url) {
 	fire_request('cart',url);

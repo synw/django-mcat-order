@@ -12,11 +12,12 @@ ORDER_STATUSES = (
                   )
 
 CIVILITIES = (
-              ('mr', 'Mr'),
-              ('mm', 'Mme'),
+              ('mr', _(u'Mr')),
+              ('mm', _(u'Mme')),
               )
 
 ORDER_STATUSES = getattr(settings, 'MCAT_ORDER_STATUSES', ORDER_STATUSES)
 
 CIVILITIES = getattr(settings, 'MCAT_CIVILITIES', CIVILITIES)
+
 

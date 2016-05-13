@@ -8,7 +8,8 @@ from mcat_order.models import Customer, Order
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['first_name', 'last_name', 'telephone', 'email', 'user']
+    list_select_related = ['user']
 
 
 @admin.register(Order)

@@ -1,0 +1,19 @@
+{% load i18n %}
+{% load bootstrap %}
+{% load account socialaccount %}
+
+{% block content %}
+	<div class="grs text-right">
+		<p class="gus gds-md">{% trans "You have to login to continue the order." %}<br  />
+		{% trans "Thank you to signup for a new account if you don't already have one." %}</p>
+		<div class="gf gc gds-md">
+			<div class="btn btn-success">
+				<i class="fa fa-check-square-o fa-lg"></i>&nbsp;<a href="{{ login_url }}">{% trans "Login" %}</a>
+			</div>
+			{% trans "or" %}
+			<div class="btn btn-primary">
+				<i class="fa fa-check-square-o fa-lg"></i>&nbsp;<a href="{{ signup_url }}">{% trans "Signup" %}</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}
