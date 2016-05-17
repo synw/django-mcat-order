@@ -9,10 +9,11 @@ from django.conf import settings
 from django.template import RequestContext
 from django.shortcuts import get_object_or_404, render_to_response, Http404, redirect
 from django.contrib.auth import get_user
+from django.contrib import messages
 from braces.views import LoginRequiredMixin
 from carton.cart import Cart
 from mcat.models import Product
-from mcat_order.models import Customer
+from mcat_order.models import Customer, Order, OrderedProduct
 from mcat_order.forms import CustomerForm
 
 
@@ -129,5 +130,32 @@ class CustomerUpdateFormView(LoginRequiredMixin, UpdateView):
     
     def get_success_url(self):
         return reverse('mcat-confirm-order')
+
+   
+class PostOrderView(LoginRequiredMixin, TemplateView):
+    template_name = 'mcat_order/posted_order.html'
+    login_url = settings.LOGIN_URL
+    
+    def dispatch(self, request, *args, **kwargs):
+        self.customer = get_object_or_404(Customer, user=self.request.user)
+        #~ create the order
+        cart = Cart(request.session)
+        if cart.count == 0:
+            messages.warning(self.request, _(u'The cart is empty: order cancelled'))
+            return super(PostOrderView, self).dispatch(request, *args, **kwargs)
+        order = Order.objects.create(customer=self.customer, total=cart.total)
+        for item in cart.items:
+            #~ get the product
+            OrderedProduct.objects.create(product=item.product, order=order, quantity=item.quantity, price_per_unit=item.product.price)
+        
+        cart.clear()
+        return super(PostOrderView, self).dispatch(request, *args, **kwargs)
+    
+    def get_context_data(self, **kwargs):
+        context = super(PostOrderView, self).get_context_data(**kwargs)
+        context['customer'] = self.customer
+        context['no_cart_icon'] = True
+        return context
+    
 
 

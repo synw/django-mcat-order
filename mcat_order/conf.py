@@ -7,8 +7,9 @@ from django.contrib.auth.models import User
 
 ORDER_STATUSES = (
                   ('pending', _(u'Pending')),
-                  ('success', _(u'Success')),
-                  ('failed', _(u'Failed')),
+                  ('confirmed', _(u'Confirmed')),
+                  ('closed', _(u'Closed')),
+                  ('rejected', _(u'Rejected')),
                   )
 
 CIVILITIES = (

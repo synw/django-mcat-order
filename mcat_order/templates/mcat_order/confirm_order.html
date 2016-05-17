@@ -18,17 +18,27 @@
 				<p>{{ customer.address|linebreaksbr }}</p>
 				<p class="text-center gus-md gds" style="font-size:120%;">{% trans 'Are these informations correct?' %}</p>
 					<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-sm-offset-2"> 
-						<a class="btn btn-block btn-primary gds" href="#delivery">{% trans "Yes, continue" %}</a>
+						<a id="summary_btn" class="btn btn-block btn-primary gds" href="javascript:accept_summary()">{% trans "Yes, continue" %}</a>
 						<a class="btn btn-block btn-default" href="{% url 'mcat-update-customer-form' customer.pk %}">{% trans "No, update the infos" %}</a>&nbsp;&nbsp;&nbsp;
 					</div>
 				</p>
 			</div>
 		</div>
 		<hr />
-		<a name="delivery"></a><h3 class="text-center">{% trans "Delivery conditions" %}</h3>
-		{% include "mcat_order/content/delivery_conditions.html" %}
-		<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-sm-offset-2 gus"> 
-			<a class="btn btn-block btn-primary gds" href="javascript:process_order()">{% trans "I agree the delivery conditions" %}</a>
+		<div id="delivery" style="display:none">
+			<a name="delivery"></a><h3 class="text-center">{% trans "Delivery conditions" %}</h3>
+			{% include "mcat_order/content/delivery_conditions.html" %}
+			<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-sm-offset-2 gus"> 
+				<a id="delivery_btn" class="btn btn-block btn-primary gds" href="javascript:accept_delivery()">{% trans "I agree the delivery conditions" %}</a>
+			</div>
+		</div>
+		<div id="final_order" style="display:none">
+			<a name="final_order"></a>
+			<div class="col-xs-12 gus">
+				<div class="jumbotron text-center"> 
+					<a id="order-btn" class="btn btn-block btn-primary btn-lg gds" href="{% url 'mcat-post-order' %}">{% trans "Post the order now" %}</a>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

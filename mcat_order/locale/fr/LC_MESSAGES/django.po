@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-09 14:58+0000\n"
+"POT-Creation-Date: 2016-05-17 14:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,18 +18,224 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: apps.py:9
+msgid "Catalog orders"
+msgstr "Catalogue: commandes"
+
+#: conf.py:9
+msgid "Pending"
+msgstr "En attente"
+
+#: conf.py:10
+msgid "Confirmed"
+msgstr "Confirmé"
+
+#: conf.py:11
+msgid "Closed"
+msgstr "Fermé"
+
+#: conf.py:12
+msgid "Rejected"
+msgstr "Rejetté"
+
+#: conf.py:16
+msgid "Mr"
+msgstr "Mr"
+
+#: conf.py:17
+msgid "Mme"
+msgstr "Mme"
+
+#: models.py:14
+msgid "First name"
+msgstr "Prénom"
+
+#: models.py:15
+msgid "Last name"
+msgstr "Nom"
+
+#: models.py:16
+msgid "Title"
+msgstr "Civilité"
+
+#: models.py:17
+msgid "Phone number"
+msgstr "Numéro de téléphone"
+
+#: models.py:18
+msgid "Company name"
+msgstr "Nom de l'entreprise"
+
+#: models.py:19
+msgid "Email"
+msgstr "Email"
+
+#: models.py:20
+msgid "Address"
+msgstr "Adresse"
+
+#: models.py:21
+msgid "User"
+msgstr "Utilisateur"
+
+#: models.py:22
+msgid "Extra infos"
+msgstr "Infos supplémentaires"
+
+#: models.py:25 models.py:45
+msgid "Customer"
+msgstr "Client"
+
+#: models.py:26
+msgid "Customers"
+msgstr "Clients"
+
+#: models.py:46
+msgid "Status"
+msgstr "Status"
+
+#: models.py:47 templates/mcat_order/cart_content.html:19
+#: templates/mcat_order/cart_summary.html:12
+msgid "Total"
+msgstr "Total"
+
+#: models.py:50 models.py:61
+#, fuzzy
+#| msgid "Order now"
+msgid "Order"
+msgstr "Passer la commande"
+
+#: models.py:51
+#, fuzzy
+#| msgid "Order now"
+msgid "Orders"
+msgstr "Passer la commande"
+
+#: models.py:60
+msgid "Product"
+msgstr "Produit"
+
+#: models.py:62
+msgid "Quantity"
+msgstr "Quantité"
+
+#: models.py:63
+msgid "Price per unit"
+msgstr "Prix unitaire"
+
+#: models.py:66
+msgid "Ordered product"
+msgstr "Produit commandé"
+
+#: models.py:67
+msgid "Ordered products"
+msgstr "Produits commandés"
+
 #: templates/mcat_order/cart.html:18
 msgid "Cart"
 msgstr "Panier"
 
-#: templates/mcat_order/cart.html:27
-msgid "Total"
-msgstr "Total"
+#: templates/mcat_order/cart.html:28
+msgid "Clear cart"
+msgstr "Vide le panier"
 
-#: templates/mcat_order/cart.html:29
-msgid "Empty cart"
-msgstr "Vider le panier"
-
-#: templates/mcat_order/cart.html:30
+#: templates/mcat_order/cart.html:30 templates/mcat_order/cart.html.py:32
 msgid "Order now"
 msgstr "Passer la commande"
+
+#: templates/mcat_order/cart.html:36
+msgid "No items in cart"
+msgstr "Aucun produit dans le panier"
+
+#: templates/mcat_order/confirm_order.html:7
+#: templates/mcat_order/customer_form.html:7
+#: templates/mcat_order/customer_update_form.html:7
+msgid "Order summary"
+msgstr "Résumé de la commande"
+
+#: templates/mcat_order/confirm_order.html:11
+msgid "Please confirm the order"
+msgstr "Merci de confirmer la commande"
+
+#: templates/mcat_order/confirm_order.html:19
+msgid "Are these informations correct?"
+msgstr "Ces informations sont-elles correctes?"
+
+#: templates/mcat_order/confirm_order.html:21
+msgid "Yes, continue"
+msgstr "Oui, continuer"
+
+#: templates/mcat_order/confirm_order.html:22
+msgid "No, update the infos"
+msgstr "No, mettre à jour les informations"
+
+#: templates/mcat_order/confirm_order.html:29
+msgid "Delivery conditions"
+msgstr "Conditions de  livraison"
+
+#: templates/mcat_order/confirm_order.html:32
+msgid "I agree the delivery conditions"
+msgstr "J'accepte les conditions de livraison"
+
+#: templates/mcat_order/confirm_order.html:39
+msgid "Post the order now"
+msgstr "Envoyer la commande maintenant"
+
+#: templates/mcat_order/content/success_msg_order_posted.html:3
+msgid ""
+"\n"
+"<div class=\"jumbotron text-center\">\n"
+"\tYour order has been posted. Thank you. We will contact you soon.\n"
+"\t<a class=\"gus gds btn btn-default\" href=\"/\">Ok</a>\n"
+"</div> \n"
+msgstr "\n<div class=\"jumbotron text-center\">\n"
+"\tVotre commande a été envoyée. Merci de votre confiance. Nous allons vous contacter pour la livraison.\n"
+"\t<a class=\"gus gds btn btn-default\" href=\"/\">Ok</a>\n"
+"</div> \n"
+
+#: templates/mcat_order/customer_form.html:11
+msgid "Please fill the informations below"
+msgstr "Merci de compléter les informations ci-dessous"
+
+#: templates/mcat_order/customer_form.html:15
+#: templates/mcat_order/customer_update_form.html:16
+msgid "Save and contine order"
+msgstr "Enregistrer et continuer la commande"
+
+#: templates/mcat_order/customer_update_form.html:11
+msgid "Client information"
+msgstr "Informations client"
+
+#: templates/mcat_order/login_choice.html:7
+msgid "You have to login to continue the order."
+msgstr "Vous devez vous connecter pour continuer la commande."
+
+#: templates/mcat_order/login_choice.html:8
+msgid "Thank you to signup for a new account if you don't already have one."
+msgstr "Merci de vous inscrire si vous n'avez pas encore de compte sur le site."
+
+#: templates/mcat_order/login_choice.html:11
+msgid "Login"
+msgstr "Se connecter"
+
+#: templates/mcat_order/login_choice.html:13
+msgid "or"
+msgstr "ou"
+
+#: templates/mcat_order/login_choice.html:15
+msgid "Signup"
+msgstr "S'inscrire"
+
+#: templates/mcat_order/posted_order.html:4
+#: templates/mcat_order/posted_order.html:7
+#, fuzzy
+#| msgid "Order now"
+msgid "Order posted"
+msgstr "Passer la commande"
+
+#: views.py:144
+msgid "The cart is empty: order cancelled"
+msgstr "Le panier est vide: commande annulée"
+
+#~ msgid "Empty cart"
+#~ msgstr "Vider le panier"
