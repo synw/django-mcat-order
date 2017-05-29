@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-
+from __future__ import print_function
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.views.generic.base import RedirectView
@@ -30,7 +29,7 @@ def add_to_cart(request, slug):
                                    )
     else:
         if settings.DEBUG:
-            print "Not ajax request"
+            print("Not ajax request")
         raise Http404
     
 def remove_from_cart(request, slug):
@@ -44,7 +43,7 @@ def remove_from_cart(request, slug):
                                    )
     else:
         if settings.DEBUG:
-            print "Not ajax request"
+            print("Not ajax request")
         raise Http404
 
 def clear_cart(request):
@@ -57,7 +56,7 @@ def clear_cart(request):
                                    )
     else:
         if settings.DEBUG:
-            print "Not ajax request"
+            print("Not ajax request")
         raise Http404
 
 # =================================== Order views ===========================
@@ -76,7 +75,7 @@ def order_dispatcher(request):
                                        )
     else:
         if settings.DEBUG:
-            print "Not ajax request"
+            print("Not ajax request")
         raise Http404
 
 
